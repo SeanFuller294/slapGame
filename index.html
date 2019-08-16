@@ -6,10 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SlapGame</title>
+  <link rel="stylesheet" href="game.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-  ljsdlgj
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <span>Name:<span id="targetName"></span></span><span>Health:<span id="targetHealth"></span></span><span>Has been
+          hit:<span id="targetHits"> 0 </span> times</span>
+      </div>
+      <div class="col right">
+        <span>Name:<span id="playerName"></span></span><span>Health:<span id="playerHealth"></span></span><span>Has been
+          hit:<span id="playerHits"> 0 </span> times</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col joe-rogan"><img id="rogan-picture" src="https://www.bjjee.com/wp-content/uploads/2018/10/jre.jpg"
+          alt="Joe Rogan"></div>
+      <div class="col joe-rogan"><img
+          src="http://www.sportsilhouettes.com/content/images/thumbs/0003049_martial-arts-33-sports-decor-silhouette-decals_550.gif"
+          alt=""></div>
+    </div>
+  </div>
+  <footer>
+    <button class="btn btn-danger" onclick="slap()">Slap</button>
+    <button class="btn btn-danger" onclick="punch()">Punch</button>
+    <button class="btn btn-danger" onclick="kick()">Kick</button>
+    <button class="btn btn-info" onclick="equipItem('brassKnuckles')">Brass Knuckles</button>
+    <button class="btn btn-info" onclick="equipItem('baton')">Baton</button>
+    <button class="btn btn-info" onclick="equipItem('bat')">Bat</button>
+  </footer>
+  <script src="game.js"></script>
+
 </body>
 
 </html>

@@ -1,83 +1,124 @@
+let playerBattleTextElem = document.getElementById("playerBattleText")
+let roganBattleTextElem = document.getElementById("roganBattleText")
 let roganPictureElem = document.getElementById("rogan-picture")
-let person = prompt("Please enter your name here", "guy ")
+let person = prompt("Please enter your name here", "Dave")
 let joeRogan = {
   name: "Joe Rogan ",
   health: 250,
   hasBeenhit: 0,
   attacks: {
-    punch: 5,
-    kick: 10,
-    spinningBackKick: 300,
+    punch: {
+      damage: 1,
+      description: "Punch "
+    },
+    kick: {
+      damage: 5,
+      description: "Kick "
+    },
+    spinningBackKick: {
+      damage: 300,
+      description: "Spinning Back Kick "
+    }
   }
 }
 
 let player = {
-  name: person,
+  name: person + " ",
   health: 100,
   hasBeenhit: 0,
   attackMod: 0,
   attacks: {
-    slap: 1,
-    punch: 5,
-    kick: 10
-  }
+    slap: {
+      damage: 1,
+      description: "Slap "
+    },
+    punch: {
+      damage: 5,
+      description: "Punch "
+    },
+    kick: {
+      damage: 10,
+      description: "Kick "
+    }
+  },
+  battleText: ""
 }
 
 let items = {
   brassKnuckles: {
     name: "Brass Knuckles",
     modifier: 5,
-    description: "Thunk"
+    description: "Thunk "
   },
   baton: {
     name: "Baton",
     modifier: 10,
-    description: "Shunt"
+    description: "Shunt "
   },
   bat: {
     name: "Bat",
     modifier: 20,
-    description: "Thwap"
+    description: "Thwap "
   }
 }
+
 function equipItem(itemString) {
   switch (itemString) {
     case "brassKnuckles": player.attackMod = items.brassKnuckles.modifier
+      player.battleTextElem = items.brassKnuckles.description
       break;
     case "baton": player.attackMod = items.baton.modifier
+      player.battleTextElem = items.baton.description
       break;
     case "bat": player.attackMod = items.bat.modifier
+      player.battleTextElem = items.bat.description
   }
 }
 
 function slap() {
-  joeRogan.health -= player.attacks.slap + player.attackMod
-  joeRogan.hasBeenhit++
-  roganAttack()
-  drawRogan()
+  if (player.health > 0 && joeRogan.health > 0) {
+    joeRogan.health -= player.attacks.slap.damage + player.attackMod
+    player.battleText = "Slap " + (player.attacks.slap.damage + player.attackMod)
+    joeRogan.hasBeenhit++
+    roganAttack()
+    drawRogan()
+  }
 }
 
 function punch() {
-  joeRogan.health -= player.attacks.punch + player.attackMod
-  joeRogan.hasBeenhit++
-  drawRogan()
+  if (player.health > 0 && joeRogan.health > 0) {
+    joeRogan.health -= player.attacks.punch.damage + player.attackMod
+    player.battleText = "Punch " + (player.attacks.punch.damage + player.attackMod)
+    joeRogan.hasBeenhit++
+    roganAttack()
+    drawRogan()
+  }
 }
 
 function kick() {
-  joeRogan.health -= player.attacks.kick + player.attackMod
-  joeRogan.hasBeenhit++
-  drawRogan()
+  if (player.health > 0 && joeRogan.health > 0) {
+    joeRogan.health -= player.attacks.kick.damage + player.attackMod
+    player.battleText = "Kick " + (player.attacks.kick.damage + player.attackMod)
+    joeRogan.hasBeenhit++
+    roganAttack()
+    drawRogan()
+  }
 }
 function roganAttack() {
-  let rand = Math.floor(Math.random() * 100) + 1
-  if (rand < 50) {
-    player.health -= joeRogan.attacks.punch
-  } else if (rand < 90) {
-    player.health -= joeRogan.attacks.kick
-  } else {
-    player.health -= joeRogan.attacks.spinningBackKick
+  if (joeRogan.health > 0 && player.health > 0) {
+    let rand = Math.floor(Math.random() * 1000) + 1
+    if (rand < 540) {
+      player.health -= joeRogan.attacks.punch.damage
+      roganBattleTextElem.innerText = `${joeRogan.attacks.punch.description + joeRogan.attacks.punch.damage}`
+    } else if (rand < 980) {
+      player.health -= joeRogan.attacks.kick.damage
+      roganBattleTextElem.innerText = `${joeRogan.attacks.kick.description + joeRogan.attacks.kick.damage}`
+    } else {
+      player.health -= joeRogan.attacks.spinningBackKick.damage
+      roganBattleTextElem.innerText = `${joeRogan.attacks.spinningBackKick.description + joeRogan.attacks.spinningBackKick.damage}`
+    }
+    player.hasBeenhit++
   }
-  player.hasBeenhit++
 }
 
 function drawRogan() {
@@ -94,18 +135,23 @@ function drawRogan() {
   playerNameElem.innerText = player.name
   playerHitsElem.innerText = `${player.hasBeenhit}`
   playerHealthElem.innerText = `${player.health}`
+  playerBattleTextElem.innerText = `${player.battleText}`
 }
 
-drawRogan();
 
 function checkHealth() {
   if (joeRogan.health <= 0) {
-    alert("Give up\nYou cannot defeat Joe Rogan")
-    joeRogan.health = 250;
+    alert("You Win")
+    joeRogan.health = 0;
     // joeRogan.hasBeenhit = 0;
   } else if (player.health <= 0) {
     player.health = 0
-    alert("Told you")
+    alert("You Lose")
 
   }
 }
+
+
+
+
+drawRogan();

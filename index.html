@@ -18,7 +18,8 @@
         <span>Name:<span id="targetName"></span></span><span>Health:<span id="targetHealth"></span></span><span>Has been
           hit:<span id="targetHits"> 0 </span> times</span>
       </div>
-      <div class="col right">
+      <div class="col"></div>
+      <div class="col">
         <span>Name:<span id="playerName"></span></span><span>Health:<span id="playerHealth"></span></span><span>Has been
           hit:<span id="playerHits"> 0 </span> times</span>
       </div>
@@ -26,19 +27,30 @@
     <div class="row">
       <div class="col joe-rogan"><img id="rogan-picture" src="https://www.bjjee.com/wp-content/uploads/2018/10/jre.jpg"
           alt="Joe Rogan"></div>
+      <div class="col" id="roganBattleText"></div>
+      <div class="col" id="playerBattleText"></div>
       <div class="col joe-rogan"><img
           src="http://www.sportsilhouettes.com/content/images/thumbs/0003049_martial-arts-33-sports-decor-silhouette-decals_550.gif"
           alt=""></div>
     </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col">
+        <div class="row">
+          <button class="btn btn-danger" onclick="slap()">Slap</button>
+          <button class="btn btn-danger" onclick="punch()">Punch</button>
+          <button class="btn btn-danger" onclick="kick()">Kick</button>
+        </div>
+        <div class="row">
+          <button class="btn btn-info" onclick="equipItem('brassKnuckles')">Brass Knuckles</button>
+          <button class="btn btn-info" onclick="equipItem('baton')">Baton</button>
+          <button class="btn btn-info" onclick="equipItem('bat')">Bat</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <footer>
-    <button class="btn btn-danger" onclick="slap()">Slap</button>
-    <button class="btn btn-danger" onclick="punch()">Punch</button>
-    <button class="btn btn-danger" onclick="kick()">Kick</button>
-    <button class="btn btn-info" onclick="equipItem('brassKnuckles')">Brass Knuckles</button>
-    <button class="btn btn-info" onclick="equipItem('baton')">Baton</button>
-    <button class="btn btn-info" onclick="equipItem('bat')">Bat</button>
-  </footer>
   <script src="game.js"></script>
 
 </body>

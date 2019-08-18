@@ -3,42 +3,42 @@ let roganBattleTextElem = document.getElementById("roganBattleText")
 let roganPictureElem = document.getElementById("rogan-picture")
 let person = prompt("Please enter your name here", "Dave")
 let joeRogan = {
-  name: "Joe Rogan ",
+  name: "Joe Rogan",
   health: 250,
   hasBeenhit: 0,
   attacks: {
     punch: {
       damage: 1,
-      description: "Punch "
+      description: "Punch"
     },
     kick: {
       damage: 5,
-      description: "Kick "
+      description: "Kick"
     },
     spinningBackKick: {
       damage: 300,
-      description: "Spinning Back Kick "
+      description: "Spinning Back Kick"
     }
   }
 }
 
 let player = {
-  name: person + " ",
+  name: person,
   health: 100,
   hasBeenhit: 0,
   attackMod: 0,
   attacks: {
     slap: {
       damage: 1,
-      description: "Slap "
+      description: "Slap"
     },
     punch: {
       damage: 5,
-      description: "Punch "
+      description: "Punch"
     },
     kick: {
       damage: 10,
-      description: "Kick "
+      description: "Kick"
     }
   },
   battleText: ""
@@ -48,37 +48,34 @@ let items = {
   brassKnuckles: {
     name: "Brass Knuckles",
     modifier: 5,
-    description: "Thunk "
+    description: "Thunk"
   },
   baton: {
     name: "Baton",
     modifier: 10,
-    description: "Shunt "
+    description: "Shunt"
   },
   bat: {
     name: "Bat",
     modifier: 20,
-    description: "Thwap "
+    description: "Thwap"
   }
 }
 
 function equipItem(itemString) {
   switch (itemString) {
     case "brassKnuckles": player.attackMod = items.brassKnuckles.modifier
-      player.battleTextElem = items.brassKnuckles.description
       break;
     case "baton": player.attackMod = items.baton.modifier
-      player.battleTextElem = items.baton.description
       break;
     case "bat": player.attackMod = items.bat.modifier
-      player.battleTextElem = items.bat.description
   }
 }
 
 function slap() {
   if (player.health > 0 && joeRogan.health > 0) {
     joeRogan.health -= player.attacks.slap.damage + player.attackMod
-    player.battleText = "Slap " + (player.attacks.slap.damage + player.attackMod)
+    player.battleText = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
     joeRogan.hasBeenhit++
     roganAttack()
     drawRogan()
@@ -88,7 +85,7 @@ function slap() {
 function punch() {
   if (player.health > 0 && joeRogan.health > 0) {
     joeRogan.health -= player.attacks.punch.damage + player.attackMod
-    player.battleText = "Punch " + (player.attacks.punch.damage + player.attackMod)
+    player.battleText = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
     joeRogan.hasBeenhit++
     roganAttack()
     drawRogan()
@@ -98,7 +95,7 @@ function punch() {
 function kick() {
   if (player.health > 0 && joeRogan.health > 0) {
     joeRogan.health -= player.attacks.kick.damage + player.attackMod
-    player.battleText = "Kick " + (player.attacks.kick.damage + player.attackMod)
+    player.battleText = player.attacks.kick.description + " " + (player.attacks.kick.damage + player.attackMod)
     joeRogan.hasBeenhit++
     roganAttack()
     drawRogan()
@@ -107,15 +104,15 @@ function kick() {
 function roganAttack() {
   if (joeRogan.health > 0 && player.health > 0) {
     let rand = Math.floor(Math.random() * 1000) + 1
-    if (rand < 540) {
+    if (rand < 541) {
       player.health -= joeRogan.attacks.punch.damage
-      roganBattleTextElem.innerText = `${joeRogan.attacks.punch.description + joeRogan.attacks.punch.damage}`
-    } else if (rand < 980) {
+      roganBattleTextElem.innerText = joeRogan.attacks.punch.description + " " + joeRogan.attacks.punch.damage
+    } else if (rand < 982) {
       player.health -= joeRogan.attacks.kick.damage
-      roganBattleTextElem.innerText = `${joeRogan.attacks.kick.description + joeRogan.attacks.kick.damage}`
+      roganBattleTextElem.innerText = joeRogan.attacks.kick.description + " " + joeRogan.attacks.kick.damage
     } else {
       player.health -= joeRogan.attacks.spinningBackKick.damage
-      roganBattleTextElem.innerText = `${joeRogan.attacks.spinningBackKick.description + joeRogan.attacks.spinningBackKick.damage}`
+      roganBattleTextElem.innerText = joeRogan.attacks.spinningBackKick.description + " " + joeRogan.attacks.spinningBackKick.damage
     }
     player.hasBeenhit++
   }
@@ -155,3 +152,15 @@ function checkHealth() {
 
 
 drawRogan();
+
+
+//make attack function
+//clean up rogan attack
+//put items in player inventory
+//reset button
+//health bars
+//wiggle pictures timer offset px settimeout
+//function wiggle(){
+//  setTimeout( () => wiggleit(2), 1000)
+//  setTimeout( () => wiggleit(-2), 1000)
+//}

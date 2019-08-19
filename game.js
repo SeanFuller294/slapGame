@@ -144,7 +144,14 @@ function checkHealth() {
 }
 
 function reset() {
-  document.location.reload()
+  joeRogan.health = 250
+  joeRogan.hasBeenhit = 0
+  player.health = 100
+  player.hasBeenhit = 0
+  player.attackMod = 0
+  drawRogan()
+  playerBattleTextElem.innerText = ""
+  roganBattleTextElem.innerText = ""
 }
 
 function roganWiggle(spaceWiggled) {
@@ -184,39 +191,6 @@ function wiggle(target) {
 }
 
 drawRogan();
-//make attack function ---CHECK!
-//clean up rogan attack ---Check!
 //put items in player inventory
 //reset button ---make this better
 //health bars
-//wiggle pictures timer offset px settimeout ---CHECK!!
-
-// function slap() {
-//   if (player.health > 0 && joeRogan.health > 0) {
-//     joeRogan.health -= player.attacks.slap.damage + player.attackMod
-//     player.battleText = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
-//     joeRogan.hasBeenhit++
-//     roganAttack()
-//     drawRogan()
-//   }
-// }
-
-// function punch() {
-//   if (player.health > 0 && joeRogan.health > 0) {
-//     joeRogan.health -= player.attacks.punch.damage + player.attackMod
-//     player.battleText = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
-//     joeRogan.hasBeenhit++
-//     roganAttack()
-//     drawRogan()
-//   }
-// }
-
-// function kick() {
-//   if (player.health > 0 && joeRogan.health > 0) {
-//     joeRogan.health -= player.attacks.kick.damage + player.attackMod
-//     player.battleText = player.attacks.kick.description + " " + (player.attacks.kick.damage + player.attackMod)
-//     joeRogan.hasBeenhit++
-//     roganAttack()
-//     drawRogan()
-//   }
-// }

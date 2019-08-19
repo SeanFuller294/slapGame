@@ -82,6 +82,30 @@ function slap() {
   }
 }
 
+function attack(attackChosen) {
+  let playerPunch = player.attacks.punch.damage + player.attackMod
+  let punchDescription = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
+  let playerKick = player.attacks.kick.damage + player.attackMod
+  let kickDescription = player.attacks.kick.description + " " + (player.attacks.kick.damage + player.attackMod)
+  let playerSlap = player.attacks.slap.damage + player.attackMod
+  let slapDescription = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
+  if (player.health > 0 && joeRogan.health > 0) {
+    if (attackChosen == "slap") {
+      //slap
+      joeRogan.health -= playerSlap
+      player.battleText = slapDescription
+    } else if (attackChosen == "punch") {
+      //punch
+      joeRogan.health -= playerPunch
+      player.battleText = punchDescription
+    } else if (attackChosen == "kick") {
+      //kick
+      joeRogan.health -= playerKick
+      player.battleText = kickDescription
+    }
+  }
+}
+
 function punch() {
   if (player.health > 0 && joeRogan.health > 0) {
     joeRogan.health -= player.attacks.punch.damage + player.attackMod

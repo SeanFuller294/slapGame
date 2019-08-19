@@ -80,12 +80,11 @@ function attack(attackChosen) {
     player.battleText = attackDescription
     joeRogan.hasBeenhit++
     drawRogan()
-    setTimeout(() => roganAttack(), 1000)// roganAttack()
+    setTimeout(() => roganAttack(), 1000)
     wiggle("rogan")
     roganBattleTextElem.innerText = ""
   }
 }
-
 
 function roganAttack() {
   let roganPunch = joeRogan.attacks.punch.damage
@@ -170,7 +169,7 @@ function wiggle(target) {
     setTimeout(() => roganWiggle(-2), 800)
     setTimeout(() => roganWiggle(2), 900)
     setTimeout(() => roganWiggle(-2), 1000)
-  } else if (target == "player") {
+  } else {
     setTimeout(() => playerWiggle(2), 100)
     setTimeout(() => playerWiggle(-2), 200)
     setTimeout(() => playerWiggle(2), 300)
@@ -190,11 +189,7 @@ drawRogan();
 //put items in player inventory
 //reset button ---make this better
 //health bars
-//wiggle pictures timer offset px settimeout
-//function wiggle(){
-//  setTimeout( () => wiggleit(2), 1000)
-//  setTimeout( () => wiggleit(-2), 1000)
-//}
+//wiggle pictures timer offset px settimeout ---CHECK!!
 
 // function slap() {
 //   if (player.health > 0 && joeRogan.health > 0) {

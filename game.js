@@ -94,7 +94,6 @@ function roganAttack() {
   let roganSpinKDiscription = joeRogan.attacks.spinningBackKick.description
   let roganAttack;
   let roganDescription;
-
   if (joeRogan.health > 0 && player.health > 0) {
     let rand = Math.floor(Math.random() * 1000) + 1
     if (rand < 541) {
@@ -137,7 +136,6 @@ function checkHealth() {
   } else if (player.health <= 0) {
     player.health = 0
     alert("You Lose")
-
   }
 }
 
@@ -148,8 +146,6 @@ function reset() {
 function wiggleit(spaceWiggled) {
   let roganPicture = document.getElementById("roganPicture")
   let playerPicture = document.getElementById("playerPicture")
-
-
 }
 
 function wiggle() {
@@ -167,8 +163,6 @@ drawRogan();
 //  setTimeout( () => wiggleit(2), 1000)
 //  setTimeout( () => wiggleit(-2), 1000)
 //}
-
-
 
 // function slap() {
 //   if (player.health > 0 && joeRogan.health > 0) {

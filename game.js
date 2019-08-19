@@ -95,6 +95,7 @@ function attack(attackChosen) {
     drawRogan()
   }
 }
+
 // function slap() {
 //   if (player.health > 0 && joeRogan.health > 0) {
 //     joeRogan.health -= player.attacks.slap.damage + player.attackMod
@@ -104,7 +105,6 @@ function attack(attackChosen) {
 //     drawRogan()
 //   }
 // }
-
 
 // function punch() {
 //   if (player.health > 0 && joeRogan.health > 0) {
@@ -125,20 +125,26 @@ function attack(attackChosen) {
 //     drawRogan()
 //   }
 // }
+
 function roganAttack() {
-  let roganPunch
+  let roganPunch = joeRogan.attacks.punch.damage
+  let roganPDiscription = joeRogan.attacks.punch.description
+  let roganKick = joeRogan.attacks.kick.damage
+  let roganKDiscription = joeRogan.attacks.kick.description
+  let roganSpinKick = joeRogan.attacks.spinningBackKick.damage
+  let roganSpinKDiscription = joeRogan.attacks.spinningBackKick.description
 
   if (joeRogan.health > 0 && player.health > 0) {
     let rand = Math.floor(Math.random() * 1000) + 1
     if (rand < 541) {
-      player.health -= joeRogan.attacks.punch.damage
-      roganBattleTextElem.innerText = joeRogan.attacks.punch.description + " " + joeRogan.attacks.punch.damage
+      player.health -= roganPunch
+      roganBattleTextElem.innerText = roganPDiscription + " " + roganPunch
     } else if (rand < 982) {
-      player.health -= joeRogan.attacks.kick.damage
-      roganBattleTextElem.innerText = joeRogan.attacks.kick.description + " " + joeRogan.attacks.kick.damage
+      player.health -= roganKick
+      roganBattleTextElem.innerText = roganKDiscription + " " + roganKick
     } else {
-      player.health -= joeRogan.attacks.spinningBackKick.damage
-      roganBattleTextElem.innerText = joeRogan.attacks.spinningBackKick.description + " " + joeRogan.attacks.spinningBackKick.damage
+      player.health -= roganSpinKick
+      roganBattleTextElem.innerText = roganSpinKDiscription + " " + roganSpinKick
     }
     player.hasBeenhit++
   }
@@ -181,7 +187,7 @@ drawRogan();
 
 
 //make attack function ---CHECK!
-//clean up rogan attack
+//clean up rogan attack ---Check!
 //put items in player inventory
 //reset button
 //health bars

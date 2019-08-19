@@ -180,6 +180,10 @@ function checkHealth() {
   }
 }
 
+function reset() {
+  document.location.reload()
+}
+
 
 
 

@@ -72,16 +72,6 @@ function equipItem(itemString) {
   }
 }
 
-function slap() {
-  if (player.health > 0 && joeRogan.health > 0) {
-    joeRogan.health -= player.attacks.slap.damage + player.attackMod
-    player.battleText = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
-    joeRogan.hasBeenhit++
-    roganAttack()
-    drawRogan()
-  }
-}
-
 function attack(attackChosen) {
   let playerPunch = player.attacks.punch.damage + player.attackMod
   let punchDescription = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
@@ -103,30 +93,41 @@ function attack(attackChosen) {
     joeRogan.hasBeenhit++
     roganAttack()
     drawRogan()
-
   }
 }
+// function slap() {
+//   if (player.health > 0 && joeRogan.health > 0) {
+//     joeRogan.health -= player.attacks.slap.damage + player.attackMod
+//     player.battleText = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
+//     joeRogan.hasBeenhit++
+//     roganAttack()
+//     drawRogan()
+//   }
+// }
 
-function punch() {
-  if (player.health > 0 && joeRogan.health > 0) {
-    joeRogan.health -= player.attacks.punch.damage + player.attackMod
-    player.battleText = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
-    joeRogan.hasBeenhit++
-    roganAttack()
-    drawRogan()
-  }
-}
 
-function kick() {
-  if (player.health > 0 && joeRogan.health > 0) {
-    joeRogan.health -= player.attacks.kick.damage + player.attackMod
-    player.battleText = player.attacks.kick.description + " " + (player.attacks.kick.damage + player.attackMod)
-    joeRogan.hasBeenhit++
-    roganAttack()
-    drawRogan()
-  }
-}
+// function punch() {
+//   if (player.health > 0 && joeRogan.health > 0) {
+//     joeRogan.health -= player.attacks.punch.damage + player.attackMod
+//     player.battleText = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
+//     joeRogan.hasBeenhit++
+//     roganAttack()
+//     drawRogan()
+//   }
+// }
+
+// function kick() {
+//   if (player.health > 0 && joeRogan.health > 0) {
+//     joeRogan.health -= player.attacks.kick.damage + player.attackMod
+//     player.battleText = player.attacks.kick.description + " " + (player.attacks.kick.damage + player.attackMod)
+//     joeRogan.hasBeenhit++
+//     roganAttack()
+//     drawRogan()
+//   }
+// }
 function roganAttack() {
+  let roganPunch
+
   if (joeRogan.health > 0 && player.health > 0) {
     let rand = Math.floor(Math.random() * 1000) + 1
     if (rand < 541) {
@@ -179,7 +180,7 @@ function checkHealth() {
 drawRogan();
 
 
-//make attack function
+//make attack function ---CHECK!
 //clean up rogan attack
 //put items in player inventory
 //reset button

@@ -84,6 +84,92 @@ function attack(attackChosen) {
   }
 }
 
+
+function roganAttack() {
+  let roganPunch = joeRogan.attacks.punch.damage
+  let roganPDiscription = joeRogan.attacks.punch.description
+  let roganKick = joeRogan.attacks.kick.damage
+  let roganKDiscription = joeRogan.attacks.kick.description
+  let roganSpinKick = joeRogan.attacks.spinningBackKick.damage
+  let roganSpinKDiscription = joeRogan.attacks.spinningBackKick.description
+  let roganAttack;
+  let roganDescription;
+
+  if (joeRogan.health > 0 && player.health > 0) {
+    let rand = Math.floor(Math.random() * 1000) + 1
+    if (rand < 541) {
+      roganAttack = roganPunch
+      roganDescription = roganPDiscription
+    } else if (rand < 982) {
+      roganAttack = roganKick
+      roganDescription = roganKDiscription
+    } else {
+      roganAttack = roganSpinKick
+      roganDescription = roganSpinKDiscription
+    }
+    player.health -= roganAttack
+    roganBattleTextElem.innerText = roganDescription + " " + roganAttack
+    player.hasBeenhit++
+  }
+}
+
+function drawRogan() {
+  let targetHealthElem = document.getElementById("targetHealth")
+  let targetNameElem = document.getElementById("targetName")
+  let targetHitsElem = document.getElementById("targetHits")
+  let playerHealthElem = document.getElementById("playerHealth")
+  let playerNameElem = document.getElementById("playerName")
+  let playerHitsElem = document.getElementById("playerHits")
+  checkHealth()
+  targetNameElem.innerText = joeRogan.name
+  targetHitsElem.innerText = `${joeRogan.hasBeenhit}`
+  targetHealthElem.innerText = `${joeRogan.health}`
+  playerNameElem.innerText = player.name
+  playerHitsElem.innerText = `${player.hasBeenhit}`
+  playerHealthElem.innerText = `${player.health}`
+  playerBattleTextElem.innerText = `${player.battleText}`
+}
+
+function checkHealth() {
+  if (joeRogan.health <= 0) {
+    alert("You Win")
+    joeRogan.health = 0;
+  } else if (player.health <= 0) {
+    player.health = 0
+    alert("You Lose")
+
+  }
+}
+
+function reset() {
+  document.location.reload()
+}
+
+function wiggleit(spaceWiggled) {
+  let roganPicture = document.getElementById("roganPicture")
+  let playerPicture = document.getElementById("playerPicture")
+
+
+}
+
+function wiggle() {
+  setTimeout(() => wiggleit(2), 1000)
+}
+
+drawRogan();
+//make attack function ---CHECK!
+//clean up rogan attack ---Check!
+//put items in player inventory
+//reset button ---make this better
+//health bars
+//wiggle pictures timer offset px settimeout
+//function wiggle(){
+//  setTimeout( () => wiggleit(2), 1000)
+//  setTimeout( () => wiggleit(-2), 1000)
+//}
+
+
+
 // function slap() {
 //   if (player.health > 0 && joeRogan.health > 0) {
 //     joeRogan.health -= player.attacks.slap.damage + player.attackMod
@@ -113,85 +199,3 @@ function attack(attackChosen) {
 //     drawRogan()
 //   }
 // }
-
-function roganAttack() {
-  let roganPunch = joeRogan.attacks.punch.damage
-  let roganPDiscription = joeRogan.attacks.punch.description
-  let roganKick = joeRogan.attacks.kick.damage
-  let roganKDiscription = joeRogan.attacks.kick.description
-  let roganSpinKick = joeRogan.attacks.spinningBackKick.damage
-  let roganSpinKDiscription = joeRogan.attacks.spinningBackKick.description
-
-  if (joeRogan.health > 0 && player.health > 0) {
-    let rand = Math.floor(Math.random() * 1000) + 1
-    if (rand < 541) {
-      player.health -= roganPunch
-      roganBattleTextElem.innerText = roganPDiscription + " " + roganPunch
-    } else if (rand < 982) {
-      player.health -= roganKick
-      roganBattleTextElem.innerText = roganKDiscription + " " + roganKick
-    } else {
-      player.health -= roganSpinKick
-      roganBattleTextElem.innerText = roganSpinKDiscription + " " + roganSpinKick
-    }
-    player.hasBeenhit++
-  }
-}
-
-function drawRogan() {
-  let targetHealthElem = document.getElementById("targetHealth")
-  let targetNameElem = document.getElementById("targetName")
-  let targetHitsElem = document.getElementById("targetHits")
-  let playerHealthElem = document.getElementById("playerHealth")
-  let playerNameElem = document.getElementById("playerName")
-  let playerHitsElem = document.getElementById("playerHits")
-  checkHealth()
-  targetNameElem.innerText = joeRogan.name
-  targetHitsElem.innerText = `${joeRogan.hasBeenhit}`
-  targetHealthElem.innerText = `${joeRogan.health}`
-  playerNameElem.innerText = player.name
-  playerHitsElem.innerText = `${player.hasBeenhit}`
-  playerHealthElem.innerText = `${player.health}`
-  playerBattleTextElem.innerText = `${player.battleText}`
-}
-
-
-function checkHealth() {
-  if (joeRogan.health <= 0) {
-    alert("You Win")
-    joeRogan.health = 0;
-    // joeRogan.hasBeenhit = 0;
-  } else if (player.health <= 0) {
-    player.health = 0
-    alert("You Lose")
-
-  }
-}
-
-function reset() {
-  document.location.reload()
-}
-
-function wiggleit(spaceWiggled) {
-
-}
-
-function wiggle() {
-  setTimeout(() => wiggleit(2), 1000)
-}
-
-
-
-drawRogan();
-
-
-//make attack function ---CHECK!
-//clean up rogan attack ---Check!
-//put items in player inventory
-//reset button ---make this better
-//health bars
-//wiggle pictures timer offset px settimeout
-//function wiggle(){
-//  setTimeout( () => wiggleit(2), 1000)
-//  setTimeout( () => wiggleit(-2), 1000)
-//}

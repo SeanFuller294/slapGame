@@ -79,8 +79,10 @@ function attack(attackChosen) {
     joeRogan.health -= playerAttack
     player.battleText = attackDescription
     joeRogan.hasBeenhit++
-    roganAttack()
     drawRogan()
+    setTimeout(() => roganAttack(), 1000)// roganAttack()
+    wiggle("rogan")
+    roganBattleTextElem.innerText = ""
   }
 }
 
@@ -109,6 +111,9 @@ function roganAttack() {
     player.health -= roganAttack
     roganBattleTextElem.innerText = roganDescription + " " + roganAttack
     player.hasBeenhit++
+    drawRogan()
+    wiggle("player")
+    playerBattleTextElem.innerText = ""
   }
 }
 
@@ -143,13 +148,40 @@ function reset() {
   document.location.reload()
 }
 
-function wiggleit(spaceWiggled) {
-  let roganPicture = document.getElementById("roganPicture")
-  let playerPicture = document.getElementById("playerPicture")
+function roganWiggle(spaceWiggled) {
+  let roganPictureElem = document.getElementById("roganPicture")
+  roganPictureElem.style.left = `${spaceWiggled}px`
 }
 
-function wiggle() {
-  setTimeout(() => wiggleit(2), 1000)
+function playerWiggle(spaceWiggled) {
+  let playerPictureElem = document.getElementById("playerPicture")
+  playerPictureElem.style.left = `${spaceWiggled}px`
+}
+
+function wiggle(target) {
+  if (target == "rogan") {
+    setTimeout(() => roganWiggle(2), 100)
+    setTimeout(() => roganWiggle(-2), 200)
+    setTimeout(() => roganWiggle(2), 300)
+    setTimeout(() => roganWiggle(-2), 400)
+    setTimeout(() => roganWiggle(2), 500)
+    setTimeout(() => roganWiggle(-2), 600)
+    setTimeout(() => roganWiggle(2), 700)
+    setTimeout(() => roganWiggle(-2), 800)
+    setTimeout(() => roganWiggle(2), 900)
+    setTimeout(() => roganWiggle(-2), 1000)
+  } else if (target == "player") {
+    setTimeout(() => playerWiggle(2), 100)
+    setTimeout(() => playerWiggle(-2), 200)
+    setTimeout(() => playerWiggle(2), 300)
+    setTimeout(() => playerWiggle(-2), 400)
+    setTimeout(() => playerWiggle(2), 500)
+    setTimeout(() => playerWiggle(-2), 600)
+    setTimeout(() => playerWiggle(2), 700)
+    setTimeout(() => playerWiggle(-2), 800)
+    setTimeout(() => playerWiggle(2), 900)
+    setTimeout(() => playerWiggle(-2), 1000)
+  }
 }
 
 drawRogan();

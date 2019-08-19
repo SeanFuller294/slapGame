@@ -91,18 +91,19 @@ function attack(attackChosen) {
   let slapDescription = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
   if (player.health > 0 && joeRogan.health > 0) {
     if (attackChosen == "slap") {
-      //slap
       joeRogan.health -= playerSlap
       player.battleText = slapDescription
     } else if (attackChosen == "punch") {
-      //punch
       joeRogan.health -= playerPunch
       player.battleText = punchDescription
     } else if (attackChosen == "kick") {
-      //kick
       joeRogan.health -= playerKick
       player.battleText = kickDescription
     }
+    joeRogan.hasBeenhit++
+    roganAttack()
+    drawRogan()
+
   }
 }
 

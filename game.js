@@ -73,23 +73,11 @@ function equipItem(itemString) {
 }
 
 function attack(attackChosen) {
-  let playerPunch = player.attacks.punch.damage + player.attackMod
-  let punchDescription = player.attacks.punch.description + " " + (player.attacks.punch.damage + player.attackMod)
-  let playerKick = player.attacks.kick.damage + player.attackMod
-  let kickDescription = player.attacks.kick.description + " " + (player.attacks.kick.damage + player.attackMod)
-  let playerSlap = player.attacks.slap.damage + player.attackMod
-  let slapDescription = player.attacks.slap.description + " " + (player.attacks.slap.damage + player.attackMod)
+  let playerAttack = player.attacks[attackChosen].damage + player.attackMod
+  let attackDescription = player.attacks[attackChosen].description + " " + (player.attacks[attackChosen].damage + player.attackMod)
   if (player.health > 0 && joeRogan.health > 0) {
-    if (attackChosen == "slap") {
-      joeRogan.health -= playerSlap
-      player.battleText = slapDescription
-    } else if (attackChosen == "punch") {
-      joeRogan.health -= playerPunch
-      player.battleText = punchDescription
-    } else if (attackChosen == "kick") {
-      joeRogan.health -= playerKick
-      player.battleText = kickDescription
-    }
+    joeRogan.health -= playerAttack
+    player.battleText = attackDescription
     joeRogan.hasBeenhit++
     roganAttack()
     drawRogan()
@@ -184,6 +172,13 @@ function reset() {
   document.location.reload()
 }
 
+function wiggleit(spaceWiggled) {
+
+}
+
+function wiggle() {
+  setTimeout(() => wiggleit(2), 1000)
+}
 
 
 
@@ -193,7 +188,7 @@ drawRogan();
 //make attack function ---CHECK!
 //clean up rogan attack ---Check!
 //put items in player inventory
-//reset button
+//reset button ---make this better
 //health bars
 //wiggle pictures timer offset px settimeout
 //function wiggle(){
